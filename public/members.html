@@ -27,13 +27,13 @@
       <ul class="navbar-nav ml-auto">
         <li><input id="myInput" type="text" placeholder="Search.."></li>
         <li class="nav-item active">
-          <button class="btn" id="addNewJob" data-toggle="modal" data-target="#newJobModal">Add new</button>
+          <button class="btn btn-success" id="addNewJob" data-toggle="modal" data-target="#newJobModal">Add new</button>
         </li>
-        <li class="nav-item active">
+        <!-- <li class="nav-item active">
           <button class="btn" id="addRepeatJobButton" data-toggle="modal" data-target="#repeatJobModal">Add repeat</button>
-        </li>
+        </li> -->
         <li class="nav-item active">
-          <button class="btn" id="logOutButton"><a class="nav-link main-nav-item" href="/logout" style="padding: 0px;">Log out </a></button>
+          <button class="btn btn-danger" id="logOutButton"><a id='logOutLink' class="nav-link main-nav-item" href="/logout" style="padding: 0px;">Log out </a></button>
         </li>
         <li class="nav-item active nav-link main-nav-item" id="nameTarget"></li>
       </ul>
@@ -41,7 +41,7 @@
     </div>
   </nav><!-- NavBar END -->
 
-  <div class="container-fluid">
+  <div class="container">
     <div class="table table-bordered" id="jobTarget">
       <tbody></tbody>
     </div>
@@ -54,160 +54,35 @@
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Add new job</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
         <div class="modal-body">
           <div>
             <div class="row">
               <div class="col">
                 <form>
-                  <h4 id="newJobIndex"></h4>
                   <!---------------------------------------------------------------------->
                   <div class="form-group">
-                    <label for="customerName">Customer name</label>
-                    <input type="text" class="form-control" id="customerName" aria-describedby="emailHelp"
-                      placeholder="Customer">
-                  </div>
-                  <!---------------------------------------------------------------------->
-                  <!--var csrArray = ["Nancy Anthony", "Fran Hice", "Nicole Lamey", "Jessica Lopez", "Kevin Mariscal", "Samara Ronkowitz", "Jamon Roth",  "Jeff Tejeda", "Caroline Vega"]-->
-                  <div class="form-group">
-                    <label for="csrSelector">CSR</label>
-                    <select class="form-control" id="csrSelector">
-                      <option>Select...</option>
-                      <option>Nancy Anthony</option>
-                      <option>Fran Hice</option>
-                      <option>Nicole Lamey</option>
-                      <option>Jessica Lopez</option>
-                      <option>Kevin Mariscal</option>
-                      <option>Samara Ronkowitz</option>
-                      <option>Jamon Roth</option>
-                      <option>Jeff Tejeda</option>
-                      <option>Caroline Vega</option>
-                    </select>
+                    <label for="itemName">Item Name</label>
+                    <input type="text" class="form-control" id="itemName" placeholder="Item">
                   </div>
                   <!---------------------------------------------------------------------->
                   <div class="form-group">
-                    <label for="sheetCount">Sheets</label>
-                    <input type="number" class="form-control" id="sheetCount" aria-describedby="emailHelp"
-                      placeholder="Sheets">
-                  </div>
-                  <!---------------------------------------------------------------------->
-                  <div class="row">
-                    <div class="col">
-                      <div class="form-group">
-                        <label for="rollSizeInput">Roll Size</label>
-                        <input type="number" class="form-control" id="rollSizeInput" aria-describedby="emailHelp"
-                          placeholder="Roll">
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="form-group">
-                        <label for="chopSizeInput">Chop Size</label>
-                        <input type="number" class="form-control" id="chopSizeInput" aria-describedby="emailHelp"
-                          placeholder="Chop">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="optimumRoll">Optimum Roll</label>
-                    <input type="number" class="form-control" id="optimumRoll" aria-describedby="emailHelp"
-                      placeholder="Optimum Roll Size">
+                    <label for="category">Category</label>
+                    <input type="text" class="form-control" id="category" placeholder="Monitor, display cables...">
                   </div>
                   <!---------------------------------------------------------------------->
                   <div class="form-group">
-                    <label for="fluteSelector">Flute</label>
-                    <select class="form-control" id="fluteSelector">
-                      <option>Select...</option>
-                      <option>B</option>
-                      <option>E</option>
-                      <option>F</option>
-                    </select>
-                  </div>
-                  <!---------------------------------------------------------------------->
-                </form>
-              </div>
-              <div class="col">
-                <button type="button" class="btn btn-primary" id="statusButton" value="new">New</button>
-                <form>
-                  <div class="form-group">
-                    <label for="topSelector">Top Sheet</label>
-                    <select class="form-control" id="topSelector">
-                      <option>Select...</option>
-                      <option>8pt.</option>
-                      <option>10pt.</option>
-                      <option>12pt.</option>
-                      <option>14pt.</option>
-                      <option>16pt.</option>
-                    </select>
+                    <label for="quantity">Quantity</label>
+                    <input type="number" class="form-control" id="quantity">
                   </div>
                   <!---------------------------------------------------------------------->
                   <div class="form-group">
-                    <label for="mediumSelector">Medium</label>
-                    <select class="form-control" id="mediumSelector">
-                      <option>Select...</option>
-                      <option>23 lb.</option>
-                      <option>26 lb.</option>
-                      <option>26 lb. Bleached</option>
-                      <option>33 lb.</option>
-                    </select>
+                    <label for="price">Item Price</label>
+                    <input type="number" class="form-control" id="price">
                   </div>
                   <!---------------------------------------------------------------------->
                   <div class="form-group">
-                    <label for="linerSelector">Liner</label>
-                    <select class="form-control" id="linerSelector">
-                      <option>Select...</option>
-                      <option>26 lb.</option>
-                      <option>26 lb. Bleached</option>
-                      <option>30 lb. Bleached</option>
-                      <option>31 lb.</option>
-                      <option>33 lb. Bleached</option>
-                      <option>33 lb. Mottled</option>
-                      <option>33 lb. Printed</option>
-                      <option>35 lb.</option>
-                      <option>35 lb. HCL</option>
-                      <option>38 lb. Printed</option>
-                      <option>41 lb.</option>
-                      <option>42 lb.</option>
-                      <option>42 lb. Bleached</option>
-                      <option>42 lb. Mottled</option>
-                      <option>50.5 lb.</option>
-                      <option>55 lb.</option>
-                      <option>55 lb. Mottled</option>
-                    </select>
-                  </div>
-                  <!---------------------------------------------------------------------->
-                  <div class="form-group">
-                    <label for="millSelector">Mill</label>
-                    <select class="form-control" id="millSelector">
-                      <option>Select...</option>
-                      <option>Any</option>
-                      <option>Cartulinas</option>
-                      <option>Metsa</option>
-                      <option>Sappi</option>
-                      <option>Stora</option>
-                      <option>Tembec</option>
-                    </select>
-                  </div>
-                  <!---------------------------------------------------------------------->
-                  <div class="form-group">
-                    <label for="layInput">Lays</label>
-                    <input type="number" class="form-control" id="layInput" aria-describedby="emailHelp"
-                      placeholder="Lays">
-                  </div>
-                  <!---------------------------------------------------------------------->
-                  <div class="form-group">
-                    <label for="coatingSelector">Coating</label>
-                    <select class="form-control" id="coatingSelector">
-                      <option>Select...</option>
-                      <option>Aqueous</option>
-                      <option>Matte</option>
-                      <option>Soft Touch</option>
-                      <option>UV</option>
-                    </select>
+                    <label for="link">Order Link</label>
+                    <input type="text" class="form-control" id="linkURL">
                   </div>
                   <!---------------------------------------------------------------------->
                 </form>
@@ -217,7 +92,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" id="addNewJobClick">Post</button>
+          <button type="button" class="btn btn-primary" id="addNewItemClick">Post</button>
         </div>
       </div>
     </div>
@@ -233,11 +108,11 @@
         <div class="modal-header">
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="repeatJobNumber">Last job</span>
+              <h4 id="listItemName"></h4>
             </div>
-            <input type="text" class="form-control" placeholder="" aria-label="Job Number" id="lastJobInput"
+            <!-- <input type="text" class="form-control" placeholder="" aria-label="Job Number" id="lastJobInput"
               aria-describedby="basic-addon1">
-            <button class="btn btn-outline-secondary" id="findLastJob" type="button">Find</button>
+            <button class="btn btn-outline-secondary" id="findLastJob" type="button">Find</button> -->
           </div>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -249,33 +124,9 @@
               <div class="col">
                 <form>
                   <!---------------------------------------------------------------------->
-                  <h6>Customer Name</h6>
-                  <p id="repeatCustomerTarget"></p>
-                  <!---------------------------------------------------------------------->
-                  <h6>CSR</h6>
-                  <p id="repeatCSRTarget"></p>
-                  <!---------------------------------------------------------------------->
-                  <div class="row">
-                    <div class="col">
-                      <h6>Roll Size</h6>
-                      <p id="repeatRollSizeTarget"></p>
-                    </div>
-                    <div class="col">
-                      <h6>Chop Size</h6>
-                      <p id="repeatChopSizeTarget"></p>
-                    </div>
-                  </div>
-                  <!---------------------------------------------------------------------->
-                  <h6>Optimum Roll Size</h6>
-                  <p id="repeatOptimumRollTarget"></p>
-                  <!---------------------------------------------------------------------->
-                  <h6>Flute</h6>
-                  <p id="repeatFluteTarget"></p>
-                  <!---------------------------------------------------------------------->
                   <div class="form-group">
-                    <label for="sheetCount">Sheets</label>
-                    <input type="number" class="form-control" id="sheetCount2" aria-describedby="emailHelp"
-                      placeholder="Sheets">
+                    <label for="sheetCount">Quantity</label>
+                    <input type="number" class="form-control" id="listItemQuantity">
                   </div>
                   <!---------------------------------------------------------------------->
                 </form>
@@ -283,25 +134,9 @@
               <div class="col">
                 <form>
                   <!---------------------------------------------------------------------->
-                  <h6>Top Sheet</h6>
-                  <p id="repeatTopSheetTarget"></p>
-                  <!---------------------------------------------------------------------->
-                  <h6>Medium</h6>
-                  <p id="repeatMediumTarget"></p>
-                  <!---------------------------------------------------------------------->
-                  <h6>Liner</h6>
-                  <p id="repeatLinerTarget"></p>
-                  <!---------------------------------------------------------------------->
-                  <h6>Mill</h6>
-                  <p id="repeatMillTarget"></p>
-                  <!---------------------------------------------------------------------->
-                  <h6>Coating</h6>
-                  <p id="repeatCoatingTarget"></p>
-                  <!---------------------------------------------------------------------->
                   <div class="form-group">
-                    <label for="layInput">Lays</label>
-                    <input type="number" class="form-control" id="layInput2" aria-describedby="emailHelp"
-                      placeholder="Lays">
+                    <label for="layInput">Price</label>
+                    <input type="number" class="form-control" id="listItemPrice">
                   </div>
                   <!---------------------------------------------------------------------->
                 </form>
@@ -311,7 +146,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" id="addRepeatJobClick">Post</button>
+          <button type="button" class="btn btn-primary" id="updateListItem">Post</button>
         </div>
       </div>
     </div>

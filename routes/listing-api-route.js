@@ -9,48 +9,38 @@ var connection = require("../config/connection.js");
 // Routes
 // =============================================================
 module.exports = function(app) {
-  app.get("/api/jobs", function(req, res) {
-    var dbQuery = "SELECT * FROM dash.Jobs";
+  app.get("/api/items", function(req, res) {
+    var dbQuery = "SELECT * FROM inventory.Items";
     connection.query(dbQuery, function(err, result) {
       if (err) throw err;
       res.json(result);
     });
   });
 
-  app.post("/api/jobs", function(req, res) {
-    console.log("New Job Data");
+  app.post("/api/items", function(req, res) {
+    console.log("New Item Data");
     console.log(req.body);
 
     var dbQuery =
-      "INSERT INTO dash.Jobs (jobNo, customer, createdDate, createdBy, csr, sheets, rollSize, chopSize, optimumRoll, flute, topSheet, medium, liner, mill,lays, newJob, coating, doneCutting, oktoClose, closedby, closedDate, analyzedBy, comments, needsAnalysis, createdAt, updatedAt) VALUES ?";
+      "INSERT INTO inventory.Items (id,itemName,category,link,quantity,priceHist1,priceHist2,priceHist3,priceHist4,priceHist5,priceHist6,imgPath,modifiedBy,createdAt,updatedAt) VALUES ?";
 
     connection.query(
       dbQuery,
       [
-        req.body.jobNo,
-        req.body.customer,
-        req.body.createdDate,
-        req.body.createdBy,
-        req.body.csr,
-        req.body.sheets,
-        req.body.rollSize,
-        req.body.chopSize,
-        req.body.optimumRoll,
-        req.body.flute,
-        req.body.topSheet,
-        req.body.medium,
-        req.body.liner,
-        req.body.mill,
-        req.body.lays,
-        req.body.newJob,
-        req.body.coating,
-        req.body.doneCutting,
-        req.body.oktoClose,
-        req.body.closedby,
-        req.body.closedDate,
-        req.body.analyzedBy,
-        req.body.comments,
-        req.body.needsAnalysis
+        req.body.itemName,
+        req.body.category,
+        req.body.link,
+        req.body.quantity,
+        req.body.priceHist1,
+        req.body.priceHist2,
+        req.body.priceHist3,
+        req.body.priceHist4,
+        req.body.priceHist5,
+        req.body.priceHist6,
+        req.body.imgPath,
+        req.body.modifiedBy,
+        req.body.createdAt,
+        req.body.updatedAt
       ],
       function(err, result) {
         if (err) throw err;
@@ -59,4 +49,6 @@ module.exports = function(app) {
       }
     );
   });
+
+  
 };

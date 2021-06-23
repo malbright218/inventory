@@ -5,7 +5,7 @@ var session = require('express-session');
 var passport = require('./config/passport')
 
 // SETTING THE PORT
-var PORT = process.env.PORT || 4000;
+var PORT = process.env.PORT || 4444;
 
 // IMPORT MODELS FOLDER
 var db = require("./models")

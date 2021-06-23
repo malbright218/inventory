@@ -1,8 +1,8 @@
 module.exports = function (sequelize, DataTypes) {
     var Item = sequelize.define("Item", {
         itemName: { type: DataTypes.STRING },
-        itemDescription: { type: DataTypes.STRING },
-        UPC: { type: DataTypes.STRING },
+        category: { type: DataTypes.STRING },
+        link: { type: DataTypes.STRING },
         quantity: { type: DataTypes.STRING },
         priceHist1: { type: DataTypes.DECIMAL(10, 2) },
         priceHist2: { type: DataTypes.DECIMAL(10, 2) },

@@ -71,15 +71,15 @@ module.exports = function(app) {
     });
   });
 
-  app.post("/api/jobs", function(req, res) {
-    db.Job.create(req.body).then(function(data) {
+  app.post("/api/items", function(req, res) {
+    db.Item.create(req.body).then(function(data) {
       res.json(data);
     });
   });
 
-  app.put("/api/jobs", function(req, res) {
+  app.put("/api/items", function(req, res) {
     console.log(req);
-    db.Job.update(req.body, {
+    db.Item.update(req.body, {
       where: {
         id: req.body.id
       }
@@ -87,4 +87,6 @@ module.exports = function(app) {
       res.json(data);
     });
   });
+
+
 };
