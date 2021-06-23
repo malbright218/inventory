@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!--Bootsrap 4 CDN-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+  <!--bootstrap toggle button-->
+  <!--Fontawesome CDN-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Abel|Cabin|Poiret+One|Righteous&display=swap" rel="stylesheet">
+  <link href="stylesheets/dashStyles.css" rel="stylesheet">
+  <title>Inside the Box</title>
+</head>
+
+<body>
+  <!-- Bootstrap NavBar -->
+  <nav class="navbar navbar-expand-lg" id="main-nav">
+    <img src="assets/cham.png" id="navLogo">
+    <a class="navbar-brand" id="navTitle" href="#">inside the box</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li><input id="myInput" type="text" placeholder="Search.."></li>
+        <li class="nav-item active">
+          <button class="btn" id="addNewJob" data-toggle="modal" data-target="#newJobModal">Add new</button>
+        </li>
+        <li class="nav-item active">
+          <button class="btn" id="addRepeatJobButton" data-toggle="modal" data-target="#repeatJobModal">Add repeat</button>
+        </li>
+        <li class="nav-item active">
+          <button class="btn" id="logOutButton"><a class="nav-link main-nav-item" href="/logout" style="padding: 0px;">Log out </a></button>
+        </li>
+        <li class="nav-item active nav-link main-nav-item" id="nameTarget"></li>
+      </ul>
+
+    </div>
+  </nav><!-- NavBar END -->
+
+  <div class="container-fluid">
+    <div class="table table-bordered" id="jobTarget">
+      <tbody></tbody>
+    </div>
+  </div>
+
+
+
+  <!-- New Job Modal -->
+  <div class="modal fade" id="newJobModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Add new job</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div>
+            <div class="row">
+              <div class="col">
+                <form>
+                  <h4 id="newJobIndex"></h4>
+                  <!---------------------------------------------------------------------->
+                  <div class="form-group">
+                    <label for="customerName">Customer name</label>
+                    <input type="text" class="form-control" id="customerName" aria-describedby="emailHelp"
+                      placeholder="Customer">
+                  </div>
+                  <!---------------------------------------------------------------------->
+                  <!--var csrArray = ["Nancy Anthony", "Fran Hice", "Nicole Lamey", "Jessica Lopez", "Kevin Mariscal", "Samara Ronkowitz", "Jamon Roth",  "Jeff Tejeda", "Caroline Vega"]-->
+                  <div class="form-group">
+                    <label for="csrSelector">CSR</label>
+                    <select class="form-control" id="csrSelector">
+                      <option>Select...</option>
+                      <option>Nancy Anthony</option>
+                      <option>Fran Hice</option>
+                      <option>Nicole Lamey</option>
+                      <option>Jessica Lopez</option>
+                      <option>Kevin Mariscal</option>
+                      <option>Samara Ronkowitz</option>
+                      <option>Jamon Roth</option>
+                      <option>Jeff Tejeda</option>
+                      <option>Caroline Vega</option>
+                    </select>
+                  </div>
+                  <!---------------------------------------------------------------------->
+                  <div class="form-group">
+                    <label for="sheetCount">Sheets</label>
+                    <input type="number" class="form-control" id="sheetCount" aria-describedby="emailHelp"
+                      placeholder="Sheets">
+                  </div>
+                  <!---------------------------------------------------------------------->
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-group">
+                        <label for="rollSizeInput">Roll Size</label>
+                        <input type="number" class="form-control" id="rollSizeInput" aria-describedby="emailHelp"
+                          placeholder="Roll">
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-group">
+                        <label for="chopSizeInput">Chop Size</label>
+                        <input type="number" class="form-control" id="chopSizeInput" aria-describedby="emailHelp"
+                          placeholder="Chop">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="optimumRoll">Optimum Roll</label>
+                    <input type="number" class="form-control" id="optimumRoll" aria-describedby="emailHelp"
+                      placeholder="Optimum Roll Size">
+                  </div>
+                  <!---------------------------------------------------------------------->
+                  <div class="form-group">
+                    <label for="fluteSelector">Flute</label>
+                    <select class="form-control" id="fluteSelector">
+                      <option>Select...</option>
+                      <option>B</option>
+                      <option>E</option>
+                      <option>F</option>
+                    </select>
+                  </div>
+                  <!---------------------------------------------------------------------->
+                </form>
+              </div>
+              <div class="col">
+                <button type="button" class="btn btn-primary" id="statusButton" value="new">New</button>
+                <form>
+                  <div class="form-group">
+                    <label for="topSelector">Top Sheet</label>
+                    <select class="form-control" id="topSelector">
+                      <option>Select...</option>
+                      <option>8pt.</option>
+                      <option>10pt.</option>
+                      <option>12pt.</option>
+                      <option>14pt.</option>
+                      <option>16pt.</option>
+                    </select>
+                  </div>
+                  <!---------------------------------------------------------------------->
+                  <div class="form-group">
+                    <label for="mediumSelector">Medium</label>
+                    <select class="form-control" id="mediumSelector">
+                      <option>Select...</option>
+                      <option>23 lb.</option>
+                      <option>26 lb.</option>
+                      <option>26 lb. Bleached</option>
+                      <option>33 lb.</option>
+                    </select>
+                  </div>
+                  <!---------------------------------------------------------------------->
+                  <div class="form-group">
+                    <label for="linerSelector">Liner</label>
+                    <select class="form-control" id="linerSelector">
+                      <option>Select...</option>
+                      <option>26 lb.</option>
+                      <option>26 lb. Bleached</option>
+                      <option>30 lb. Bleached</option>
+                      <option>31 lb.</option>
+                      <option>33 lb. Bleached</option>
+                      <option>33 lb. Mottled</option>
+                      <option>33 lb. Printed</option>
+                      <option>35 lb.</option>
+                      <option>35 lb. HCL</option>
+                      <option>38 lb. Printed</option>
+                      <option>41 lb.</option>
+                      <option>42 lb.</option>
+                      <option>42 lb. Bleached</option>
+                      <option>42 lb. Mottled</option>
+                      <option>50.5 lb.</option>
+                      <option>55 lb.</option>
+                      <option>55 lb. Mottled</option>
+                    </select>
+                  </div>
+                  <!---------------------------------------------------------------------->
+                  <div class="form-group">
+                    <label for="millSelector">Mill</label>
+                    <select class="form-control" id="millSelector">
+                      <option>Select...</option>
+                      <option>Any</option>
+                      <option>Cartulinas</option>
+                      <option>Metsa</option>
+                      <option>Sappi</option>
+                      <option>Stora</option>
+                      <option>Tembec</option>
+                    </select>
+                  </div>
+                  <!---------------------------------------------------------------------->
+                  <div class="form-group">
+                    <label for="layInput">Lays</label>
+                    <input type="number" class="form-control" id="layInput" aria-describedby="emailHelp"
+                      placeholder="Lays">
+                  </div>
+                  <!---------------------------------------------------------------------->
+                  <div class="form-group">
+                    <label for="coatingSelector">Coating</label>
+                    <select class="form-control" id="coatingSelector">
+                      <option>Select...</option>
+                      <option>Aqueous</option>
+                      <option>Matte</option>
+                      <option>Soft Touch</option>
+                      <option>UV</option>
+                    </select>
+                  </div>
+                  <!---------------------------------------------------------------------->
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="addNewJobClick">Post</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--/////////////////////////////////////////////////////////////////////// 
+
+//////////////////////////////////////////////////////////////////////////-->
+  <!-- Repeat Job Modal -->
+  <div class="modal fade" id="repeatJobModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="repeatJobNumber">Last job</span>
+            </div>
+            <input type="text" class="form-control" placeholder="" aria-label="Job Number" id="lastJobInput"
+              aria-describedby="basic-addon1">
+            <button class="btn btn-outline-secondary" id="findLastJob" type="button">Find</button>
+          </div>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div>
+            <div class="row">
+              <div class="col">
+                <form>
+                  <!---------------------------------------------------------------------->
+                  <h6>Customer Name</h6>
+                  <p id="repeatCustomerTarget"></p>
+                  <!---------------------------------------------------------------------->
+                  <h6>CSR</h6>
+                  <p id="repeatCSRTarget"></p>
+                  <!---------------------------------------------------------------------->
+                  <div class="row">
+                    <div class="col">
+                      <h6>Roll Size</h6>
+                      <p id="repeatRollSizeTarget"></p>
+                    </div>
+                    <div class="col">
+                      <h6>Chop Size</h6>
+                      <p id="repeatChopSizeTarget"></p>
+                    </div>
+                  </div>
+                  <!---------------------------------------------------------------------->
+                  <h6>Optimum Roll Size</h6>
+                  <p id="repeatOptimumRollTarget"></p>
+                  <!---------------------------------------------------------------------->
+                  <h6>Flute</h6>
+                  <p id="repeatFluteTarget"></p>
+                  <!---------------------------------------------------------------------->
+                  <div class="form-group">
+                    <label for="sheetCount">Sheets</label>
+                    <input type="number" class="form-control" id="sheetCount2" aria-describedby="emailHelp"
+                      placeholder="Sheets">
+                  </div>
+                  <!---------------------------------------------------------------------->
+                </form>
+              </div>
+              <div class="col">
+                <form>
+                  <!---------------------------------------------------------------------->
+                  <h6>Top Sheet</h6>
+                  <p id="repeatTopSheetTarget"></p>
+                  <!---------------------------------------------------------------------->
+                  <h6>Medium</h6>
+                  <p id="repeatMediumTarget"></p>
+                  <!---------------------------------------------------------------------->
+                  <h6>Liner</h6>
+                  <p id="repeatLinerTarget"></p>
+                  <!---------------------------------------------------------------------->
+                  <h6>Mill</h6>
+                  <p id="repeatMillTarget"></p>
+                  <!---------------------------------------------------------------------->
+                  <h6>Coating</h6>
+                  <p id="repeatCoatingTarget"></p>
+                  <!---------------------------------------------------------------------->
+                  <div class="form-group">
+                    <label for="layInput">Lays</label>
+                    <input type="number" class="form-control" id="layInput2" aria-describedby="emailHelp"
+                      placeholder="Lays">
+                  </div>
+                  <!---------------------------------------------------------------------->
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="addRepeatJobClick">Post</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+  <script src="js/dashScript.js"></script>
+  <!-- <script src="js/dataScript.js"></script> -->
+</body>
+
+</html>

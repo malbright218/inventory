@@ -1,0 +1,82 @@
+#addNewJob, #addRepeatJobButton, #logOutButton {
+    background-color: #FEDC3D;
+    border: 0.5px solid black;
+    margin-left: 4px;
+}
+
+#myInput {
+    margin-top: 2px;
+}
+
+a {
+    color: #000;
+}
+
+th {
+    text-align: center;
+}
+
+#jobTarget {
+    margin-top: 70px;
+    text-align: center;
+}
+
+.toggle {
+    width: 100%;    
+}
+
+#toggleBox {
+    width: 100%;
+}
+
+/* TABLE STYLING ////////////////////////////////////////////*/
+.bflute {
+    background-color: #0600FF;
+    color: #fff;
+    text-align: center;
+}
+
+.eflute {
+    background-color: #fff;
+    color: #000;
+    text-align: center;
+}
+
+.fflute {
+    background-color: #ffff00;
+    color: #000;
+    text-align: center;
+}
+
+.newJob {
+    background-color: #17A2B8;
+}
+
+/* NAVBAR STYLING /////////////////////////////////////////*/
+.navbar {
+    position: fixed;
+    overflow: hidden;
+    top: 0;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#main-nav {
+    background-color: #FEDC3D;
+    color: #000000;
+    font-family: 'Poiret One', cursive;
+    
+}
+
+#navLogo {
+    height: 60px;
+    width: 60px;
+}
+
+#navTitle {
+    color: #000000;
+    font-size: 22pt;
+    font-family: 'Righteous', cursive;
+}
+/* NAVBAR STYLING /////////////////////////////////////////*/
+
