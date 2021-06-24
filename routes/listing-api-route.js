@@ -5,7 +5,7 @@
 // Dependencies
 // =============================================================
 var connection = require("../config/connection.js");
-
+var db = require("../models");
 // Routes
 // =============================================================
 module.exports = function(app) {
@@ -16,6 +16,21 @@ module.exports = function(app) {
       res.json(result);
     });
   });
+
+  app.get("/api/items/:id", function(req, res) {
+    // Here we add an "include" property to our options in our findOne query
+    // We set the value to an array of the models we want to include in a left outer join
+    // In this case, just db.Post
+    db.Item.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(data) {
+      res.json(data);
+    });
+  });
+
+  
 
   app.post("/api/items", function(req, res) {
     console.log("New Item Data");

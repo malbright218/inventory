@@ -56,6 +56,7 @@ module.exports = function(app) {
   });
 
   app.post("/api/endusers", function(req, res) {
+    console.log(req.body)
     db.EndUsers.create(req.body).then(function(data) {
       res.json(data);
     });

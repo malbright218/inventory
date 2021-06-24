@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
     integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Abel|Cabin|Poiret+One|Righteous&display=swap" rel="stylesheet">
-  <link href="stylesheets/dashStyles.css" rel="stylesheet">
+  <link href="stylesheets/endUserStyles.css" rel="stylesheet">
   <title>Inside the Box</title>
 </head>
 
@@ -25,7 +25,16 @@
     <a class="navbar-brand" id="navTitle" href="#">inside the box</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
-        <li><input id="myInput" type="text" placeholder="Search.."></li>
+        <li class='nav-item'>
+          <div class="form-group nav-item">
+            <select class="form-control" id="userSelectorForm">
+              <option>Select user</option>
+            </select>
+          </div>
+        </li>
+        <li class="nav-item active">
+          <button class="btn btn-info" id="itemTableButton"><a id="itemLink" class="nav-link main-nav-item" style="margin-left: 4px; padding: 0px; color: #FFF" href="/members">Item Table</a></button>
+        </li>
         <li class="nav-item active">
           <button class="btn btn-success" id="addNewJob" data-toggle="modal" data-target="#newJobModal">Add new</button>
         </li>
@@ -33,16 +42,75 @@
           <button class="btn" id="addRepeatJobButton" data-toggle="modal" data-target="#repeatJobModal">Add repeat</button>
         </li> -->
         <li class="nav-item active">
-          <button class="btn btn-danger" id="logOutButton"><a id='logOutLink' class="nav-link main-nav-item" href="/logout" style="padding: 0px;">Log out </a></button>
+          <button class="btn btn-danger" id="logOutButton"><a id='logOutLink' class="nav-link main-nav-item"
+              href="/logout" style="padding: 0px;">Log out </a></button>
         </li>
-        <li class="nav-item active nav-link main-nav-item" id="nameTarget"></li>
+        <!-- <li class="nav-item active nav-link main-nav-item" id="nameTarget"></li> -->
       </ul>
 
     </div>
   </nav><!-- NavBar END -->
 
-  <div class="container-fluid">
+  <div class="container-fluid body-form">
+    <div class="row">
+      <div class="col border-right">
+        <h4>User Information</h4>
+        <form>
+          <!---------------------------------------------------------------------->
+          <div class="form-group input-container">
+            <i class="fas fa-user icon"></i>
+            <input type="text" class="form-control" id="endUserFormName" placeholder="Name">
+          </div>
+          <!---------------------------------------------------------------------->
+          <div class="form-group input-container">
+            <i class="fas fa-tag icon"></i>
+            <input type="text" class="form-control" id="endUserFormTitle" placeholder="Title">
+          </div>
+          <!---------------------------------------------------------------------->
+          <div class="form-group input-container">
+            <i class="fas fa-location-arrow icon"></i>
+            <input type="text" class="form-control" id="endUserFormLocation" placeholder="Location">
+          </div>
+          <!---------------------------------------------------------------------->
+          <button type="button" class="btn btn-primary" id="updateUserButton">Update</button>
+        </form>
+      </div>
+      <div class="col border-right">
+        <h4>Issue Equipment</h4>
+        <form>
+          <!---------------------------------------------------------------------->
+          <div class="form-group input-container">
+            <i class="fas fa-wrench icon"></i>
+            <select class="form-control" id="itemSelector">
+              <option>Select item</option>
+            </select>
+          </div>
+          <!---------------------------------------------------------------------->
+          <div class="form-group input-container">
+            <i class="fas fa-hashtag icon"></i>
+            <input type="number" class="form-control" id="itemQuantity">
+          </div>
+          <!---------------------------------------------------------------------->
+          <div class="form-group input-container">
+            <i class="fas fa-user icon"></i>
+            <input type="text" class="form-control" id="endUserFormNameItem" placeholder="Name">
+          </div>
+          <!---------------------------------------------------------------------->
+          <button type="button" class="btn btn-primary" id="updateUserButtonItem">Update</button>
+        </form>
+      </div>
+      <div class="col">
+        <h4>History</h4>
+        <div class="container">
+          <table class='table'  id="issueTable"></table>
+
+        </div>
+
+      </div>
+    </div>
     
+    
+
   </div>
 
 
@@ -58,29 +126,19 @@
               <div class="col">
                 <form>
                   <!---------------------------------------------------------------------->
-                  <div class="form-group">
-                    <label for="itemName">Item Name</label>
-                    <input type="text" class="form-control" id="itemName" placeholder="Item">
+                  <div class="form-group input-container">
+                    <i class="fas fa-user icon"></i>
+                    <input type="text" class="form-control" id="endUserName" placeholder="Name">
                   </div>
                   <!---------------------------------------------------------------------->
-                  <div class="form-group">
-                    <label for="category">Category</label>
-                    <input type="text" class="form-control" id="category" placeholder="Monitor, display cables...">
+                  <div class="form-group input-container">
+                    <i class="fas fa-tag icon"></i>
+                    <input type="text" class="form-control" id="endUserTitle" placeholder="Title">
                   </div>
                   <!---------------------------------------------------------------------->
-                  <div class="form-group">
-                    <label for="quantity">Quantity</label>
-                    <input type="number" class="form-control" id="quantity">
-                  </div>
-                  <!---------------------------------------------------------------------->
-                  <div class="form-group">
-                    <label for="price">Item Price</label>
-                    <input type="number" class="form-control" id="price">
-                  </div>
-                  <!---------------------------------------------------------------------->
-                  <div class="form-group">
-                    <label for="link">Order Link</label>
-                    <input type="text" class="form-control" id="linkURL">
+                  <div class="form-group input-container">
+                    <i class="fas fa-location-arrow icon"></i>
+                    <input type="text" class="form-control" id="endUserLocation" placeholder="Location">
                   </div>
                   <!---------------------------------------------------------------------->
                 </form>
@@ -90,7 +148,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" id="addNewItemClick">Post</button>
+          <button type="button" class="btn btn-primary" id="addNewEndUser">Post</button>
         </div>
       </div>
     </div>

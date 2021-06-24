@@ -9,14 +9,47 @@
     width: 100%;
 }
 
+.input-container {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.icon {
+    padding: 10px;
+    background-color: #FFC108;
+    color: #000;
+    min-width: 50px;
+    text-align: center;    
+}
+
+.body-form {
+    margin-top: 100px;
+}
+
+h4 {
+    text-align: center;
+}
+
+.border-right {
+    border-right: 2px #FFC108 solid;
+}
+
 #addRepeatJobButton {
     background-color: #FFC108;
     border: 0.5px solid black;
 }
 
+#myInput {
+    margin-top: 2px;
+    margin-right: 4px;
+}
+
+
+
 #logOutLink, #endUserLink {
     color: #fff;
 }
+
 
 th {
     text-align: center;
