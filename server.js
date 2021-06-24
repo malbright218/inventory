@@ -29,6 +29,7 @@ app.use(passport.session());
 require('./routes/api-routes')(app);
 require('./routes/html-routes')(app);
 require('./routes/listing-api-route')(app);
+require('./routes/enduser-api-route')(app);
 
 // LISTENER
 db.sequelize.sync().then(function() {

@@ -16,6 +16,7 @@
     "floatthead": "^2.1.4",
     "mysql": "^2.17.1",
     "mysql2": "^1.6.5",
+    "nodemon": "^2.0.7",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "sequelize": "^5.9.0"

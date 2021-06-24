@@ -55,21 +55,24 @@ module.exports = function(app) {
     }
   });
 
-  app.get("/api/jobs", function(req, res) {
-    db.Job.findAll({}).then(function(data) {
+  app.post("/api/endusers", function(req, res) {
+    db.EndUsers.create(req.body).then(function(data) {
       res.json(data);
     });
   });
 
-  app.get("/api/jobs/:jobNo", function(req, res) {
-    db.Job.findOne({
+  app.put("/api/endusers", function(req, res) {
+    console.log(req);
+    db.EndUsers.update(req.body, {
       where: {
-        jobNo: req.params.jobNo
+        id: req.body.id
       }
     }).then(function(data) {
       res.json(data);
     });
   });
+
+
 
   app.post("/api/items", function(req, res) {
     db.Item.create(req.body).then(function(data) {

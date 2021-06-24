@@ -19,7 +19,7 @@
     margin-right: 8px;
 }
 
-#logOutLink {
+#logOutLink, #endUserLink {
     color: #fff;
 }
 
