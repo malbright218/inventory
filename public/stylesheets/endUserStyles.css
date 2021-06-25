@@ -30,6 +30,10 @@ h4 {
     text-align: center;
 }
 
+th, thead {
+    text-align: left;
+}
+
 .border-right {
     border-right: 2px #FFC108 solid;
 }

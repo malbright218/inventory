@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+  var selectedUserId = 0;
+
   $.get("/api/user_data", showName);
   function showName(data) {
     // $("#nameTarget").append(data.name);
@@ -76,14 +78,15 @@ $(document).ready(function () {
       update(updateListing);
     });
 
-    // ACTION WHEN SELECTING A USER
-    $("#userSelectorForm").change(function () {
-
-      
+    //// ACTION WHEN SELECTING A USER ////////////////////////////////
+    $("#userSelectorForm").change(function () {      
       $("#itemSelector").text("Select item");
       var selectedId = $(this).children(":selected").attr("id");
-      var selectedName = $("#userSelectorForm").val().trim();
+      var selectedName = $(this).children(":selected").val().trim()
+      console.log(selectedName)
+      // var selectedName = $("#userSelectorForm").val().trim();
       issuesTable(selectedId)
+      selectedUserId = selectedId
       $.get("/api/endusers/" + selectedId, function (data) {
         $("#endUserFormName").val(data.name);
         $("#endUserFormName").attr("selectorID", data.id);
@@ -92,7 +95,6 @@ $(document).ready(function () {
         $("#endUserFormNameItem").val(data.name);
         $("#endUserFormNameItem").attr("selectorID", data.id);
       });
-
       $.get("/api/items", function (data) {
         var initEle = $("<option>");
         initEle.append("Select item");
@@ -130,15 +132,21 @@ $(document).ready(function () {
       update(updateEndUser);
     });
 
-    // ISSUE EQUIPMENT
+    // ISSUE EQUIPMENT TO SELECTED USER
     $("#itemSelector").change(function () {
       var selectedId = $(this).children(":selected").attr("id");
       var itemQty = $(this).children(":selected").attr("qty");
       var itemName = $(this).children(":selected").text();
+      console.log(selectedId + " | " + itemQty + " | " + itemName)      
       $("#itemQuantity").attr("qty", itemQty);
-      $("#itemQuantity").attr("name", itemName);
-      $.get("/api/items");
+      $("#itemQuantity").attr("name", itemName);     
       $("#updateUserButtonItem").attr("itemid", selectedId);
+      
+      $.get("/api/endusers/" + selectedUserId, function (data) {
+        console.log(data)
+        var oldUserItems = {};
+        
+      })
     });
 
     $("#updateUserButtonItem").on("click", function () {
